@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .product-card {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card h2 {
+            margin-top: 0;
+        }
+
+        .product-card p {
+            margin: 5px 0;
+        }
+
+        .product-card .price, .product-card .quantity {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="product-card">
+        <button><a href="{{ url_for('auth.createview')}}">Add Product</a></button>
+    </div>
+    {% for object in objects %}
+    <div class="product-card">
+        <h2>{{ object.name }}</h2>
+        <p>{{ object.description }}</p>
+        <p class="price">Price: Rs.{{ object.price }}</p>
+        <p class="quantity">Quantity: {{ object.quantity }}</p>
+        <button><a href="{{ url_for('auth.deleteview', id=object.id)}}">Delete</a></button>
+        <button><a href="{{ url_for('auth.updateview', id=object.id)}}">Update</a></button>
+    </div>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 300px;
+        }
+
+        .container h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .product-details {
+            margin-bottom: 20px;
+        }
+
+        .product-details div {
+            margin-bottom: 5px;
+        }
+
+        .form-group {
+            text-align: center;
+        }
+
+        .form-group button {
+            padding: 10px 20px;
+            background-color: #dc3545;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .form-group button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Delete Product</h2>
+        <div class="product-details">
+            <div><strong>Name:</strong> {{ del_obj.name }}</div>
+            <div><strong>Description:</strong> {{ del_obj.description }}</div>
+            <div><strong>Price:</strong> {{ del_obj.price }}</div>
+            <div><strong>Quantity:</strong> {{ del_obj.quantity }}</div>
+        </div>
+        <form action="{{ url_for('auth.deleteview', id=del_obj.id) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <div class="form-group">
+                <button type="submit">Are you sure? You want to delete it</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
